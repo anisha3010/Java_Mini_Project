@@ -20,6 +20,7 @@ public class project extends JFrame implements ItemListener,ActionListener{
     JButton Next;
     Choice ch;
     int x = 0;
+	int y=0;
     //Images Path In Array
     String[] list = {
                       "listzero.png",
@@ -103,31 +104,31 @@ public class project extends JFrame implements ItemListener,ActionListener{
         pic.setIcon(newImc);
     }
      public void itemStateChanged(ItemEvent ie){
-        x=ch.getSelectedIndex();// starts from 0 to soon
+        y=ch.getSelectedIndex();// starts from 0 to soon
       
    }
    
    public void actionPerformed(ActionEvent ae){
-       if(x==0)
+       if(y==0)
        {
 
         frame.setVisible(false);
        Line.line  l= new Line.line();
      
        }
-       else if(x==1)
+       else if(y==1)
        {
            frame.setVisible(false);
           Circle.circle c=new Circle.circle(); 
        
        }
-       else if(x==2)
+       else if(y==2)
        {
            frame.setVisible(false);
            Ellipse.ellipse e=new Ellipse.ellipse();
           
        }
-       else if(x==3)
+       else if(y==3)
        {
            frame.setVisible(false);
            Parabola.parabola p=new Parabola.parabola();
