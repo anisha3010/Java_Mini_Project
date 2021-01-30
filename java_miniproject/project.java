@@ -20,17 +20,13 @@ public class project extends JFrame implements ItemListener,ActionListener{
     JButton Next;
     Choice ch;
     int x = 0;
-	int y=0;
+    int z=0;
     //Images Path In Array
     String[] list = {
-                      "listzero.png",
-       "listone.png",
-       "listtwo.png",
-       "listthree.png",
-       "listfour.png",
-       "listfive.png",
-       "listsix.png",
-       "listseven.png"
+                      "lineslide.jpg",
+       "ellie.jpg",
+       "circleslide.jpg",
+       "paraslide.jpg"
                     };
     
     public project(){
@@ -42,19 +38,19 @@ public class project extends JFrame implements ItemListener,ActionListener{
         pic = new JLabel();
         
              Dimension screenSize = Toolkit. getDefaultToolkit(). getScreenSize();
-        pic.setBounds(screenSize.width*20/100,screenSize.height*30/100,screenSize.width*60/100,screenSize.height*60/100);
+        pic.setBounds(screenSize.width*30/100,screenSize.height*40/100,screenSize.width*40/100,screenSize.height*40/100);
             
         Label head =new Label ("GRAPH SIMULATOR ");
           head.setFont(new Font("Serif",Font.BOLD,30));
-        header.add(head); 
+        header.add(head);
        
         header.setBounds(screenSize.width*10/100,screenSize.height*2/100,screenSize.width*80/100,screenSize.height*7/100);
         // for left panel
        
         left.setBounds(0,screenSize.height*9/100,screenSize.width*19/100,screenSize.height*81/100);
-        left.setBackground(Color.decode("#70db70"));
+        left.setBackground(Color.decode("#eeeeee"));
          right.setBounds(screenSize.width*81/100,screenSize.height*9/100,screenSize.width*19/100,screenSize.height*81/100);
-        right.setBackground(Color.decode("#70db70"));
+        right.setBackground(Color.decode("#eeeeee"));
         
        Next=new JButton("NEXT");
        Next.setToolTipText("Click Next for Graph Simulation ");
@@ -65,9 +61,9 @@ public class project extends JFrame implements ItemListener,ActionListener{
        ch.add("Parabola");
        
        ch.setBounds(screenSize.width/2-screenSize.width/10,screenSize.height*15/100,screenSize.width/5,screenSize.height*10/100);
-       Next.setBounds(screenSize.width/2-screenSize.width/10,screenSize.height*20/100,screenSize.width/10,screenSize.height*5/100);
+       Next.setBounds(screenSize.width/2- screenSize.width/30,screenSize.height*25/100,screenSize.width/20,screenSize.height*5/100);
         //Call The Function SetImageSize
-        SetImageSize(6);
+        SetImageSize(2);
                //set a timer
         tm = new Timer(1500,new ActionListener() {
 
@@ -81,8 +77,8 @@ public class project extends JFrame implements ItemListener,ActionListener{
         });
         frame.add(pic);
         frame.add(ch);
-        frame.add(Next);
         frame.add(header);
+        frame.add(Next);
         frame.add(left);
         frame.add(right);
         tm.start();
@@ -90,10 +86,18 @@ public class project extends JFrame implements ItemListener,ActionListener{
         Next.addActionListener(this);
         frame.setLayout(null);
         frame.setSize(screenSize);
-        frame.getContentPane().setBackground(Color.decode("#ff9933"));
+        frame.getContentPane().setBackground(Color.decode("#eeeeee"));
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        addWindowListener(new WindowAdapter(){
+    public void windowClosing(WindowEvent we)
+    {
+        dispose();
+    }
+   });
+        
+        
     }
     //create a function to resize the image 
     public void SetImageSize(int i){
@@ -104,45 +108,55 @@ public class project extends JFrame implements ItemListener,ActionListener{
         pic.setIcon(newImc);
     }
      public void itemStateChanged(ItemEvent ie){
-        y=ch.getSelectedIndex();// starts from 0 to soon
+        z=ch.getSelectedIndex();// starts from 0 to soon
       
    }
    
    public void actionPerformed(ActionEvent ae){
-       if(y==0)
+       if(z==0)
        {
 
-        frame.setVisible(false);
+        
        Line.line  l= new Line.line();
+       //frame.setVisible(false);
      
        }
-       else if(y==1)
+       else if(z==1)
        {
-           frame.setVisible(false);
+         
           Circle.circle c=new Circle.circle(); 
+            //frame.setVisible(false);
        
        }
-       else if(y==2)
+       else if(z==2)
        {
-           frame.setVisible(false);
+           
            Ellipse.ellipse e=new Ellipse.ellipse();
+           //frame.setVisible(false);
           
        }
-       else if(y==3)
+       else if(z==3)
        {
-           frame.setVisible(false);
+           
            Parabola.parabola p=new Parabola.parabola();
+           //frame.setVisible(false);
        }
        else
        {// if nothing selected, line will be auto selected
-          frame.setVisible(false);
+          
+          
           Line.line  l= new Line.line();
+          //frame.setVisible(false);
+          
        }
        
    }
+   
+
 
 public static void main(String[] args){ 
       
     new project();
 }
 }
+
